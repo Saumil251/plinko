@@ -7,6 +7,7 @@ var plinkos=[]
 var divisions=[]
 var divisionHeight=300
 var engine, world;
+var score=0
 
 function setup() {
   createCanvas(800,800);
@@ -31,6 +32,9 @@ function draw() {
   background(0);
   Engine.update(engine); 
   ground.display() 
+  fill("white")
+  textSize(20)
+  text("score:"+score,700,30)
   for (var i=0;i <plinkos.length;i++){
     plinkos[i].display()
   }
@@ -39,6 +43,12 @@ function draw() {
   }
   if(frameCount%60==0){
 particles.push(new Particle(random(width/2-10,width/2+10),10,10))
+score++
+  }
+  textSize(50)
+  if(score>10){
+  fill("red")
+    text("Game Over",300,400)
   }
   for (var i=0;i < particles.length;i++){
     particles[i].display()
